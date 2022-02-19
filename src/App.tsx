@@ -24,6 +24,8 @@ const App: React.FunctionComponent = () => {
     'bc-data',
     getBCData
   );
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Something went wrong...</div>;
   return (
     <Wrapper>
       <p>Hello world</p>
