@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery } from 'react-query';
-import { Wrapper } from './styles/App.styles';
+import Wrapper from './styles/App.styles';
 
 interface IBitcoinDataProps {
   '15m': number;
