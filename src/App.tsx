@@ -24,11 +24,10 @@ const App: React.FunctionComponent = () => {
     'bc-data',
     getBCData
   );
-  console.log(data);
   return (
-    <div className="App">
+    <Wrapper>
       <p>Hello world</p>
-    </div>
+    </Wrapper>
   );
 };
 
