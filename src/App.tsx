@@ -37,8 +37,19 @@ const App: React.FunctionComponent = () => {
       <>
         <h2>Bitcoin price</h2>
         <select value={currency} onChange={handleCurrencySelection}>
-          map through api data
+          {data &&
+            Object.keys(data).map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
         </select>
+        <div>
+          <h2>
+            {data && data[currency].symbol}
+            {data && data[currency].last}
+          </h2>
+        </div>
       </>
     </Wrapper>
   );
