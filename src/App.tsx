@@ -20,15 +20,26 @@ const getBCData = async (): Promise<Currencies> =>
 const intervalTime = 30000;
 
 const App: React.FunctionComponent = () => {
+  const [currency, setCurrency] = useState('USD');
   const { data, isLoading, error, refetch } = useQuery<Currencies>(
     'bc-data',
     getBCData
   );
+
+  const handleCurrencySelection = (e: any) => {
+    setCurrency(e.currentTarget.value);
+  };
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong...</div>;
   return (
     <Wrapper>
-      <p>Hello world</p>
+      <>
+        <h2>Bitcoin price</h2>
+        <select value={currency} onChange={handleCurrencySelection}>
+          map through api data
+        </select>
+      </>
     </Wrapper>
   );
 };
