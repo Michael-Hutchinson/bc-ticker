@@ -20,7 +20,7 @@ const getBCData = async (): Promise<Currencies> =>
 const intervalTime = 30000;
 
 const App: React.FunctionComponent = () => {
-  const [currency, setCurrency] = useState('USD');
+  const [currency, setCurrency] = useState('GBP');
   const { data, isLoading, error, refetch } = useQuery<Currencies>(
     'bc-data',
     getBCData
@@ -29,6 +29,11 @@ const App: React.FunctionComponent = () => {
   const handleCurrencySelection = (e: any) => {
     setCurrency(e.currentTarget.value);
   };
+
+  useEffect(() => {
+    const interval = setInterval(refetch, intervalTime);
+    return () => clearInterval(interval);
+  }, [refetch]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Something went wrong...</div>;
